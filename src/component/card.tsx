@@ -2,7 +2,7 @@ type Props = {
     image: string,
     title: string,
     rating: string,
-    tags: string[],
+    tags?: string[],
     description: string,
     price: string,
     prevPrice: string,
@@ -23,11 +23,11 @@ const Card = ({...props}: Props) => {
                             <img src={props.star} alt="..." /> <span className="text-[20px] font-[500] text-customMainColor">{props.rating}</span>
                         </p>
                     </div>
-                    <div className="flex gap-[6px] flex-wrap">
-                        {props.tags.map((tag,i) => (
+                    {props.tags ? <div className="flex gap-[6px] flex-wrap">
+                        {props.tags?.map((tag,i) => (
                             <span key={i} className="bg-customSecondaryColor text-customMainSecondaryColor manrope-semibold text-[12px] px-[10px] py-[3px] border-none rounded-[5px]">{tag}&nbsp;</span>
                         ))}
-                    </div>
+                    </div> : null}
                     <div>
                         <p className="manrope-semibold text-[14px] text-customMainSecondaryColor">{props.description}</p>
                     </div>
